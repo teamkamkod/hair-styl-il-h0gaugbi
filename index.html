@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hair Styl IL, coiffeur & barbier à Nantes. Note 4,3/5, ouvert du mardi au dimanche. Prenez rendez-vous au 02 28 08 16 14.">
+    <title>Hair Styl IL | Coiffeur & Barbier à Nantes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c9a227;
+            --background: #f5f0e6;
+            --text: #1a1a1a;
+            --cta: #c9a227;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+            --radius: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(26, 26, 26, 0.98);
+            z-index: 1000;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu.open {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background-color: rgba(26, 26, 26, 0.99);
+            padding: 2rem 1.5rem;
+            gap: 1rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .burger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background-color: transparent;
+                padding: 0;
+            }
+
+            .nav-menu.open {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background-color: transparent;
+                padding: 0;
+                top: auto;
+                left: auto;
+                right: auto;
+            }
+
+            .burger {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4)), url('assets/hero.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            color: #fff;
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cta);
+            color: var(--primary);
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--cta);
+            cursor: pointer;
+            border-radius: var(--radius);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--cta);
+        }
+
+        @media (max-width: 767px) {
+            #hero {
+                height: 80vh;
+                margin-top: 60px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        #apropos {
+            background-color: #fff;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Featured Menu */
+        #services {
+            background-color: var(--background);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 2rem;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--secondary);
+            border-left: 2px solid var(--secondary);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--secondary);
+            border-right: 2px solid var(--secondary);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Customer Reviews */
+        #avis {
+            background-color: #fff;
+        }
+
+        .reviews-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: var(--background);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .review-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-style: italic;
+            color: #333;
+        }
+
+        .review-stars {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 0.3rem;
+        }
+
+        /* Gallery Preview */
+        #galerie {
+            background-color: var(--background);
+        }
+
+        .gallery-carousel {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .gallery-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-carousel::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+
+        .gallery-carousel::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+        }
+
+        .gallery-item {
+            flex: 0 0 300px;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            border-top: 2px solid var(--secondary);
+            border-left: 2px solid var(--secondary);
+        }
+
+        @media (min-width: 768px) {
+            .gallery-item {
+                flex: 0 0 350px;
+                height: 350px;
+            }
+        }
+
+        /* Hours & Location */
+        #horaires {
+            background-color: #fff;
+        }
+
+        .hours-location-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .hours-table {
+            background-color: var(--background);
+            padding: 2rem;
+        }
+
+        .hours-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table th,
+        .hours-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hours-table th {
+            background-color: var(--primary);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .hours-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .location-info {
+            background-color: var(--background);
+            padding: 2rem;
+        }
+
+        .location-info p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .location-info strong {
+            color: var(--primary);
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        @media (min-width: 768px) {
+            .hours-location-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .map-container iframe {
+                height: 400px;
+            }
+        }
+
+        /* Contact Form */
+        #contact {
+            background-color: var(--background);
+        }
+
+        .contact-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background-color: var(--cta);
+            color: var(--primary);
+            padding: 0.9rem 2rem;
+            border: 2px solid var(--cta);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background-color: transparent;
+            color: var(--cta);
+        }
+
+        /* Trust Signals */
+        #confiance {
+            background-color: #fff;
+        }
+
+        .trust-signals-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-signal {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--background);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .trust-signal h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .trust-signal p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (min-width: 768px) {
+            .trust-signals-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .trust-signals-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Intersection Observer */
+        .observe {
+            opacity: 0;
+        }
+
+        .observe.visible {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Hair Styl IL</a>
+        <button class="burger" id="burger-menu" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#hero">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#services">Prestations</a></li>
+            <li><a href="#avis">Avis</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#horaires">Horaires</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Hair Styl IL – Coiffeur & Barbier à Nantes</h1>
+            <p>Situé au 23 Rue de Bel air, 44000 Nantes, Hair Styl IL vous accueille dans une ambiance chaleureuse et professionnelle. Que vous souhaitiez une coupe tendance, un style classique ou un entretien de barbe, notre équipe vous conseille et réalise vos envies avec précision.</p>
+            <a href="#contact" class="cta-button">Prenez rendez-vous dès maintenant</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos">
+        <h2 class="section-heading">À propos de Hair Styl IL</h2>
+        <div class="about-content">
+            <p>Chez Hair Styl IL, nous mettons un point d'honneur à offrir un service rapide, abordable et professionnel. Notre objectif : vous satisfaire pleinement, en écoutant vos demandes et en les réalisant exactement comme vous le souhaitez. Reconnu pour notre savoir-faire, nous sommes fiers de compter parmi les meilleurs barbiers de Nantes.</p>
+            <a href="#services" class="cta-button">Découvrez nos services</a>
+        </div>
+    </section>
+
+    <!-- Featured Menu / Services -->
+    <section id="services">
+        <h2 class="section-heading">Nos prestations</h2>
+        <p class="section-text">Nous proposons une gamme complète de services pour homme et femme : coupes, coiffage, barbes, etc. Chaque prestation est réalisée sur mesure, selon vos envies et votre style.</p>
+        <div class="services-grid">
+            <div class="service-card observe">
+                <h3>Coupes tendance</h3>
+                <p>Découvrez les dernières tendances capillaires avec notre équipe expérimentée. Nous adaptons chaque coupe à votre morphologie et vos préférences.</p>
+            </div>
+            <div class="service-card observe">
+                <h3>Coloration</h3>
+                <p>Changez de look avec nos services de coloration professionnels. Produits de qualité et expertise pour un résultat impeccable.</p>
+            </div>
+            <div class="service-card observe">
+                <h3>Soins capillaires</h3>
+                <p>Prenez soin de vos cheveux avec nos traitements spécialisés. Hydratation, nutrition et revitalisation pour des cheveux en pleine santé.</p>
+            </div>
+            <div class="service-card observe">
+                <h3>Coiffure de mariage</h3>
+                <p>Votre jour spécial mérite une coiffure parfaite. Nous créons des styles élégants et durables pour votre mariage.</p>
+            </div>
+            <div class="service-card observe">
+                <h3>Conseils personnalisés</h3>
+                <p>Notre équipe vous conseille sur l'entretien de vos cheveux et les produits adaptés à votre type de cheveux.</p>
+            </div>
+            <div class="service-card observe">
+                <h3>Produits professionnels</h3>
+                <p>Accédez à notre sélection de produits professionnels pour maintenir votre style entre deux visites au salon.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section id="avis">
+        <h2 class="section-heading">Ce que disent nos clients</h2>
+        <p class="section-text">La satisfaction de nos clients est notre plus belle récompense. Voici un aperçu de leurs retours :</p>
+        <div class="reviews-container">
+            <div class="review-card observe">
+                <div class="review-icon">💬</div>
+                <div class="review-text">"Je connais pas de meilleur barber à Nantes. Rapide, pas cher et pro, tu dis ce que tu veux, il te le fait, fin de l'histoire"</div>
+                <div class="review-stars">★★★★★</div>
+                <div class="review-author">Maxence Debien</div>
+                <div class="review-date">il y a 11 mois</div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#contact" class="cta-button">Laissez-nous votre avis</a>
+        </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section id="galerie">
+        <h2 class="section-heading">Nos réalisations</h2>
+        <p class="section-text">Un aperçu de nos coupes et styles, pour vous inspirer avant votre prochaine visite.</p>
+        <div class="gallery-carousel">
+            <div class="gallery-item" style="background-image: url('assets/gallery-1.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('assets/gallery-2.jpg');"></div>
+            <div class="gallery-item" style="background-image: url('assets/hero.jpg');"></div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#contact" class="cta-button">Voir plus de photos</a>
+        </div>
+    </section>
+
+    <!-- Hours & Location -->
+    <section id="horaires">
+        <h2 class="section-heading">Horaires & Accès</h2>
+        <div class="hours-location-wrapper">
+            <div class="hours-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Jour</th>
+                            <th>Horaires</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lundi</td>
+                            <td>Fermé</td>
+                        </tr>
+                        <tr>
+                            <td>Mardi</td>
+                            <td>09:00 – 19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Mercredi</td>
+                            <td>09:00 – 19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Jeudi</td>
+                            <td>09:00 – 19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Vendredi</td>
+                            <td>09:00 – 19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Samedi</td>
+                            <td>09:00 – 19:30</td>
+                        </tr>
+                        <tr>
+                            <td>Dimanche</td>
+                            <td>10:00 – 17:00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="location-info">
+                <p><strong>Adresse :</strong><br>23 Rue de Bel air, 44000 Nantes, France</p>
+                <p><strong>Téléphone :</strong><br><a href="tel:+33228081614">+33 2 28 08 16 14</a></p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.7849999999997!2d-1.5574!3d47.2199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805a51b5b5b5b5b%3A0x5b5b5b5b5b5b5b5b!2s23%20Rue%20de%20Bel%20air%2C%2044000%20Nantes!5e0!3m2!1sfr!2sfr!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://www.google.com/maps/search/23+Rue+de+Bel+air,+44000+Nantes" target="_blank" class="cta-button">Itinéraire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact">
+        <h2 class="section-heading">Contactez-nous</h2>
+        <p class="section-text">Pour toute demande de rendez-vous ou d'information, appelez-nous au +33 2 28 08 16 14 ou envoyez-nous un message via le formulaire ci-dessous.</p>
+        <div class="contact-wrapper">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section id="confiance">
+        <h2 class="section-heading">Pourquoi nous choisir ?</h2>
+        <p class="section-text">Note moyenne de 4,3/5 basée sur 100 avis clients. Un service rapide, professionnel et à l'écoute de vos envies.</p>
+        <div class="trust-signals-grid">
+            <div class="trust-signal observe">
+                <h3>Équipe expérimentée</h3>
+                <p>Notre équipe possède des années d'expérience dans le secteur de la coiffure et de la barberie.</p>
+            </div>
+            <div class="trust-signal observe">
+                <h3>Accueil sans rendez-vous</h3>
+                <p>Nous accueillons nos clients sans rendez-vous pour plus de flexibilité et de commodité.</p>
+            </div>
+            <div class="trust-signal observe">
+                <h3>Produits professionnels</h3>
+                <p>Nous utilisons uniquement des produits professionnels de qualité pour vos cheveux.</p>
+            </div>
+            <div class="trust-signal observe">
+                <h3>Paiement par carte accepté</h3>
+                <p>Nous acceptons tous les modes de paiement pour votre confort.</p>
+            </div>
+            <div class="trust-signal observe">
+                <h3>Proche parking</h3>
+                <p>Notre salon est situé à proximité de parkings pour un accès facile.</p>
+            </div>
+            <div class="trust-signal observe">
+                <h3>Ambiance conviviale</h3>
+                <p>Venez profiter d'une ambiance chaleureuse et accueillante dans notre salon.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#contact" class="cta-button">Réservez votre créneau</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Hair Styl IL</h2>
+        <p>23 Rue de Bel air, 44000 Nantes, France<br>
+        Téléphone : <a href="tel:+33228081614">+33 2 28 08 16 14</a><br>
+        Horaires : Mardi au Samedi 09:00-19:30, Dimanche 10:00-17:00, Lundi Fermé</p>
+        <p style="margin-top: 2rem; font-size: 0.85rem; color: #ccc;">© 2024 Hair Styl IL. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // Burger Menu Toggle
+        const burgerMenu = document.getElementById('burger-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        burgerMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('open');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const observeElements = document.querySelectorAll('.observe');
+        observeElements.forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
